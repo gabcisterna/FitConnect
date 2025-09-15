@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}FitConnect{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:system-ui,Arial,sans-serif;max-width:720px;margin:0 auto;padding:16px;}
+    header,footer{margin:12px 0;color:#555}
+    .card{border:1px solid #ddd;border-radius:8px;padding:16px;margin:12px 0}
+    .btn{padding:10px 14px;border:1px solid #333;border-radius:6px;background:#f5f5f5;cursor:pointer}
+    .input,select{width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;margin:6px 0}
+    .error{color:#b00020}
+    a{color:#0b5ed7;text-decoration:none}
+  </style>
+</head>
+<body>
+<header>
+  <a href="/">FitConnect</a> — <a href="/login">Ingresar</a> — <a href="/register">Registrarse</a>
+</header>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div>
+      {% for category, m in messages %}
+        <p class="{{ category }}">{{ m }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+{% block content %}{% endblock %}
+
+<footer>
+  <small>© {{ 2025 }} FitConnect — MVP Flask</small>
+</footer>
+</body>
+</html>
